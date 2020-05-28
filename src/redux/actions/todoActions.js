@@ -28,10 +28,10 @@ export const addTodo = (todoObject) => async (dispatch) => {
     type: ADD_TODO_REQUEST,
   });
   try {
-    await axios.post(`${ADD_TODO}`, todoObject);
+    const response = await axios.post(`${ADD_TODO}`, todoObject);
     dispatch({
       type: ADD_TODO_SUCCESS,
-      payload: todoObject,
+      payload: response,
     });
   } catch (error) {
     dispatch({

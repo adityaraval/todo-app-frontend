@@ -16,7 +16,7 @@ export default function (state = initialState, { type, payload }) {
       return {
         ...state,
         items: [...state.items, {
-          ...payload, id: Math.random(),
+          ...payload.todo,
         }],
       };
     }
