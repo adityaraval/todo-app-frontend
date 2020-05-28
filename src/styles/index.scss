@@ -1,0 +1,22 @@
+/* import bootstrap to set changes */
+@import "~bootstrap/scss/bootstrap";
+
+h1,h2,h3,h4,h5,h6,th{
+font-family: 'Nunito', sans-serif;
+}
+
+p,td,a{
+font-family: 'Nunito', sans-serif;
+}
+.error {
+    border: 2px solid #e90000!important;
+}
+.error-message {
+    color: #e90000;
+    font-size: .8em;
+    font-weight: bold;
+}
+
+.react-datepicker-wrapper{
+  display: block !important;
+}
