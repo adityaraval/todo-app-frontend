@@ -95,6 +95,13 @@ export const updateProfile = (userObject) => async (dispatch) => {
   });
   try {
     await axios.put(`${UPDATE_PROFILE}`, userObject);
+    // update local storage
+    const user = await storage.getItem('user');
+    const parsedUser = JSON.parse(user);
+    parsedUser.name = userObject.name;
+    parsedUser.email = userObject.email;
+    await storage.setItem('user', parsedUser);
+
     dispatch({
       type: UPDATE_PROFILE_SUCCESS,
       payload: userObject,

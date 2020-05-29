@@ -30,6 +30,25 @@ export default function (state = initialState, { type, payload }) {
         isLoading: false,
       };
     }
+    case types.UPDATE_TODO_REQUEST: {
+      return {
+        ...state,
+        isLoading: true,
+      };
+    }
+    case types.UPDATE_TODO_SUCCESS: {
+      return {
+        ...state,
+        items: _.map(state.items, (item) => (item.id === payload.id ? { ...item, title: payload.title, date: payload.date } : item)),
+        isLoading: false,
+      };
+    }
+    case types.UPDATE_TODO_FAILURE: {
+      return {
+        ...state,
+        isLoading: false,
+      };
+    }
     case types.GET_ALL_TODO_REQUEST: {
       return {
         ...state,

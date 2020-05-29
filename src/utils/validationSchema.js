@@ -43,6 +43,14 @@ export const addTodoValidationSchema = Yup.object().shape({
   date: Yup.date().required(),
 });
 
+export const editTodoValidationSchema = Yup.object().shape({
+  title: Yup.string()
+    .min(2, 'Title must have at least 2 characters')
+    .max(30, 'Title can not have more than 30 characters')
+    .required('*Title is required'),
+  date: Yup.date().required(),
+});
+
 
 export const defaultSchema = {
   user: {
@@ -62,4 +70,5 @@ export const validationSchema = {
   updateProfileValidationSchema,
   changePasswordValidationSchema,
   addTodoValidationSchema,
+  editTodoValidationSchema,
 };

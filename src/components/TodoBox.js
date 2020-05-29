@@ -5,25 +5,17 @@ import {
 } from 'formik';
 import {
   Form,
-  Button,
   Row,
   Col,
 } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-
-import styled from 'styled-components';
 import { defaultSchema, validationSchema } from '../utils/validationSchema';
-import colors from '../utils/theme';
 
 import Loader from './Loader';
 
-const SubmitButton = styled(Button)`
-    background-color:${colors.BrandBlue};
-    color:${colors.BrandWhite}
-    border:0;
-`;
+import { SubmitButton } from '../styles/commonStyles';
 
 
 const TodoForm = ({ addTodo, isLoading }) => (

@@ -7,42 +7,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
-import styled from 'styled-components';
 import {
   Nav,
-  Navbar,
 } from 'react-bootstrap';
-
-import colors from '../utils/theme';
-
-
-// navbar
-export const CustomNavBar = styled(Navbar)`
-  background-color:${colors.BrandBlack};
-`;
-
-export const Brand = styled(Navbar.Brand)`
-  color:${colors.BrandWhite};
-  font-family: 'Nunito', sans-serif;
-  font-size:24px;
-  font-weight: 600;
-    &:hover {
-      color:${colors.BrandWhite};
-      text-decoration:none;
-  }
-`;
-
-export const StyledLink = styled(Nav.Link)`
-  color:${colors.BrandWhite};
-  font-size:14px;
-  font-weight:500;
-  margin-right:10px;
-  margin-left:10px;
-    &:hover {
-        color:${colors.BrandWhite};
-        text-decoration:none;
-    }
-`;
+import {
+  CustomNavBar, Brand, StyledLink,
+} from '../styles/commonStyles';
 
 
 // render profile picture for logged in user

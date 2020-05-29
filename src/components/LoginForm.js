@@ -5,25 +5,12 @@ import {
 } from 'formik';
 import {
   Form,
-  Button,
 } from 'react-bootstrap';
 
-import styled from 'styled-components';
 import { defaultSchema, validationSchema } from '../utils/validationSchema';
-import colors from '../utils/theme';
 import Loader from './Loader';
+import { SubmitButton, FormContainer } from '../styles/commonStyles';
 
-const SubmitButton = styled(Button)`
-    background-color:${colors.BrandBlue};
-    color:${colors.BrandWhite}
-    border:0;
-`;
-
-const FormContainer = styled.div`
-    background-color: ${colors.BrandBackground};
-    padding: 32px;
-    border-radius:5px;
-`;
 
 const LoginForm = ({ login, isLoggingIn }) => (
   <FormContainer className="justify-content-md-center mt-5">
@@ -75,7 +62,7 @@ const LoginForm = ({ login, isLoggingIn }) => (
               Password :
             </Form.Label>
             <Form.Control
-              type="text"
+              type="password"
               name="password"
               onChange={handleChange}
               onBlur={handleBlur}

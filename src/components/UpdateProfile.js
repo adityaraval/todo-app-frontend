@@ -5,26 +5,12 @@ import {
 } from 'formik';
 import {
   Form,
-  Button,
 } from 'react-bootstrap';
 
-import styled from 'styled-components';
 import {
   validationSchema,
 } from '../utils/validationSchema';
-import colors from '../utils/theme';
-
-const SubmitButton = styled(Button)`
-    background-color:${colors.BrandBlue};
-    color:${colors.BrandWhite}
-    border:0;
-`;
-
-const FormContainer = styled.div`
-    background-color: ${colors.BrandBackground};
-    padding: 32px;
-    border-radius:5px;
-`;
+import { SubmitButton, FormContainer } from '../styles/commonStyles';
 
 const UpdateProfile = ({ updateProfile, currentUser }) => (
   <FormContainer className="justify-content-md-center mt-5">

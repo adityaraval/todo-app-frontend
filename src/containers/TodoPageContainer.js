@@ -4,6 +4,7 @@ import TodoPage from '../pages/TodoPage';
 
 import {
   addTodo,
+  updateTodo,
   getAllTodos,
   completeTodo,
   deleteTodo,
@@ -18,6 +19,7 @@ import {
 function mapDispatchToProps(dispatch) {
   return {
     addTodo: (todoObj) => dispatch(addTodo(todoObj)),
+    updateTodo: (id, todoObj) => dispatch(updateTodo(id, todoObj)),
     getAllTodos: () => dispatch(getAllTodos()),
     completeTodo: (id) => dispatch(completeTodo(id)),
     deleteTodo: (id) => dispatch(deleteTodo(id)),

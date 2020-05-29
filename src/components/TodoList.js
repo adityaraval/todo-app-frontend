@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import moment from 'moment';
 
 import {
   Button, Badge,
 } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faCheck, faEdit } from '@fortawesome/free-solid-svg-icons';
+
+import EditModal from './EditModal';
 
 const renderBadge = (completed) => {
   if (completed) {
@@ -16,13 +18,24 @@ const renderBadge = (completed) => {
 
 const formatDate = (date) => moment(date).format('DD/MM/YYYY');
 
+
 const TodoList = ({
-  items, deleteTodo, completeTodo, isLoading,
+  items, deleteTodo, completeTodo, updateTodo, isLoading,
 }) => {
+  const [show, setShow] = useState(false);
+  const [todoToBeEdited, setTodoToBeEdited] = useState({ title: '', date: '' });
+
+  const handleClose = () => setShow(false);
+  const handleShow = (item) => {
+    setShow(true);
+    setTodoToBeEdited(item);
+  };
+
   if (items.length) {
     return (
-      <ul className="list-group">
-        {
+      <>
+        <ul className="list-group">
+          {
           items.map((item) => (
             <li
               key={item.id}
@@ -37,6 +50,12 @@ const TodoList = ({
                       onClick={() => deleteTodo(item.id)}
                     >
                       <FontAwesomeIcon icon={faTrash} />
+                    </Button>
+                    <Button
+                      variant="outline-secondary"
+                      onClick={() => handleShow(item)}
+                    >
+                      <FontAwesomeIcon icon={faEdit} />
                     </Button>
                     <Button variant="outline-success">
                       <FontAwesomeIcon
@@ -53,10 +72,19 @@ const TodoList = ({
                 }
               </div>
               <div>{renderBadge(item.completed)}</div>
+
             </li>
           ))
-        }
-      </ul>
+          }
+        </ul>
+        <EditModal
+          show={show}
+          handleClose={handleClose}
+          isLoading={isLoading}
+          todo={todoToBeEdited}
+          updateTodo={updateTodo}
+        />
+      </>
     );
   } if (isLoading && items.length === 0) {
     return <span>Todo list is loading!</span>;
