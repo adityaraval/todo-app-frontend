@@ -12,12 +12,14 @@ const getInitialState = async () => {
   if (token) {
     return {
       currentUser: JSON.parse(user),
-      token,
+      isSigningUp: false,
+      isLoggingIn: false,
     };
   }
   return {
     currentUser: {},
-    token: !!localStorage.getItem('token'),
+    isSigningUp: false,
+    isLoggingIn: false,
   };
 };
 

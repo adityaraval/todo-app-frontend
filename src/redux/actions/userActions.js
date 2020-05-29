@@ -94,7 +94,7 @@ export const updateProfile = (userObject) => async (dispatch) => {
     type: UPDATE_PROFILE_REQUEST,
   });
   try {
-    const response = await axios.put(`${UPDATE_PROFILE}`, userObject);
+    await axios.put(`${UPDATE_PROFILE}`, userObject);
     dispatch({
       type: UPDATE_PROFILE_SUCCESS,
       payload: userObject,

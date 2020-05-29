@@ -11,6 +11,8 @@ import TodoList from '../components/TodoList';
 
 import colors from '../utils/theme';
 
+import FilterTodos from '../components/FilterTodos';
+
 
 const FormContainer = styled(Container)`
     background-color: ${colors.BrandBackground};
@@ -20,6 +22,8 @@ const FormContainer = styled(Container)`
 
 const TodoPage = ({
   items,
+  isLoading,
+  changeFilter,
   addTodo,
   getAllTodos,
   completeTodo,
@@ -35,14 +39,25 @@ const TodoPage = ({
         <Col>
           <TodoBox
             addTodo={addTodo}
+            isLoading={isLoading}
           />
         </Col>
       </Row>
-      <TodoList
-        items={items}
-        completeTodo={completeTodo}
-        deleteTodo={deleteTodo}
-      />
+      <Row>
+        <Col>
+          <FilterTodos changeFilter={changeFilter} />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <TodoList
+            items={items}
+            isLoading={isLoading}
+            completeTodo={completeTodo}
+            deleteTodo={deleteTodo}
+          />
+        </Col>
+      </Row>
     </FormContainer>
   );
 };

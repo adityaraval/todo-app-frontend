@@ -8,7 +8,8 @@ import {
 } from '../redux/actions/userActions';
 
 import {
-  selectCurrentUser,
+  selectLoginLoader,
+  selectSignupLoader,
 } from '../redux/selectors/userSelectors';
 
 function mapDispatchToProps(dispatch) {
@@ -19,7 +20,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser,
+  isSigningUp: selectSignupLoader,
+  isLoggingIn: selectLoginLoader,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

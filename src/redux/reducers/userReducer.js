@@ -3,6 +3,8 @@ import { defaultSchema } from '../../utils/validationSchema';
 
 const initialState = {
   currentUser: defaultSchema.user,
+  isLoggingIn: false,
+  isSigningUp: false,
 };
 
 export default function (state = initialState, { type, payload }) {
@@ -10,32 +12,38 @@ export default function (state = initialState, { type, payload }) {
     case types.SIGNUP_REQUEST: {
       return {
         ...state,
+        isSigningUp: true,
       };
     }
     case types.SIGNUP_SUCCESS: {
       return {
         ...state,
+        isSigningUp: false,
       };
     }
     case types.SIGNUP_FAILURE: {
       return {
         ...state,
+        isSigningUp: false,
       };
     }
     case types.LOGIN_REQUEST: {
       return {
         ...state,
+        isLoggingIn: true,
       };
     }
     case types.LOGIN_SUCCESS: {
       return {
         ...state,
         currentUser: payload.user,
+        isLoggingIn: false,
       };
     }
     case types.LOGIN_FAILURE: {
       return {
         ...state,
+        isLoggingIn: false,
       };
     }
     case types.FETCH_CURRENT_USER_REQUEST: {

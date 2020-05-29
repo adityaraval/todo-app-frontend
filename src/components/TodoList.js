@@ -16,7 +16,9 @@ const renderBadge = (completed) => {
 
 const formatDate = (date) => moment(date).format('DD/MM/YYYY');
 
-const TodoList = ({ items, deleteTodo, completeTodo }) => {
+const TodoList = ({
+  items, deleteTodo, completeTodo, isLoading,
+}) => {
   if (items.length) {
     return (
       <ul className="list-group">
@@ -56,6 +58,8 @@ const TodoList = ({ items, deleteTodo, completeTodo }) => {
         }
       </ul>
     );
+  } if (isLoading && items.length === 0) {
+    return <span>Todo list is loading!</span>;
   }
   return <span>No items, please use above form to add items</span>;
 };

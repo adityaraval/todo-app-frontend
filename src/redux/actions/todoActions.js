@@ -94,3 +94,10 @@ export const deleteTodo = (id) => async (dispatch) => {
     });
   }
 };
+
+
+export const changeFilter = (filter) => (dispatch) => {
+  dispatch({
+    type: filter,
+  });
+};

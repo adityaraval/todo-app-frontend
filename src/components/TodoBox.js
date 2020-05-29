@@ -12,9 +12,12 @@ import {
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
+
 import styled from 'styled-components';
 import { defaultSchema, validationSchema } from '../utils/validationSchema';
 import colors from '../utils/theme';
+
+import Loader from './Loader';
 
 const SubmitButton = styled(Button)`
     background-color:${colors.BrandBlue};
@@ -23,23 +26,22 @@ const SubmitButton = styled(Button)`
 `;
 
 
-const TodoForm = ({ addTodo }) => (
+const TodoForm = ({ addTodo, isLoading }) => (
   <>
-    <h1>Todo Box</h1>
+    <div className="d-flex flex-row align-items-center justify-content-between">
+      <h1>Todo Box</h1>
+      <Loader isLoading={isLoading} />
+    </div>
     <Formik
       initialValues={defaultSchema.todo}
       enableReinitialize
       validationSchema={validationSchema.addTodoValidationSchema}
-      onSubmit={(values, { setSubmitting, resetForm }) => {
-        setSubmitting(true);
-        setTimeout(() => {
-          addTodo({
-            title: values.title,
-            date: values.date,
-          });
-          setSubmitting(false);
-          resetForm();
-        }, 500);
+      onSubmit={(values, { resetForm }) => {
+        addTodo({
+          title: values.title,
+          date: values.date,
+        });
+        resetForm();
       }}
     >
       {({
@@ -49,7 +51,6 @@ const TodoForm = ({ addTodo }) => (
         handleChange,
         handleBlur,
         handleSubmit,
-        isSubmitting,
         setFieldValue,
       }) => (
         <Form onSubmit={handleSubmit} className="mx-auto">
@@ -97,7 +98,7 @@ const TodoForm = ({ addTodo }) => (
           <Form.Group className="d-flex justify-content-between">
             <SubmitButton
               type="submit"
-              disabled={isSubmitting}
+              disabled={isLoading}
             >
               ADD TODO
             </SubmitButton>
